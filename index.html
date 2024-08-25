@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcula IMC</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>   
+    <div class="form">
+        <h1>Calcular seu IMC</h1>
+        <label for="peso">Peso (Kg)</Kg></label>
+        <input type="number" id="peso" placeholder="Qual seu Peso?">
+
+        <label for="altura">Altura (M)</label>
+        <input type="number" id="altura" placeholder="Qual sua Altura?">
+
+        <button onclick="calcular()">Calcula</button>
+    </div>
+
+    <!-- Modal e sobreposição -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal" id="modal">
+        <p id="modal-message"></p>
+        <button onclick="fecharModal()">Fechar</button>
+    </div>
+
+    <script>
+        // Função para abrir o modal com a mensagem
+        function abrirModal(mensagem) {
+            document.getElementById("modal-message").innerText = mensagem;
+            document.getElementById("modal-overlay").style.display = "block";
+            document.getElementById("modal").style.display = "block";
+        }
+
+        // Função para fechar o modal
+        function fecharModal() {
+            document.getElementById("modal-overlay").style.display = "none";
+            document.getElementById("modal").style.display = "none";
+        }
+
+        function calcular(){
+            const peso = document.getElementById("peso").value;
+            const altura = document.getElementById("altura").value;
+
+            if (!peso || !altura || peso <= 0 || altura <= 0) {
+                abrirModal("Por favor, insira valores válidos para peso e altura.");
+                return;
+            }
+
+            // Calculando o IMC com duas casas decimais
+            const imc = (peso / (altura ** 2)).toFixed(1); 
+            let classificacao = '';
+
+            // Determinando a classificação do IMC
+            if (imc < 18) {
+                classificacao = 'abaixo do peso';
+            } else if (imc >= 18 && imc < 25) {
+                classificacao = 'com peso normal';
+            } else if (imc >= 25 && imc < 30) {
+                classificacao = 'com sobrepeso';
+            } else if (imc >= 30 && imc < 35) {
+                classificacao = 'com obesidade grau I';
+            } else if (imc >= 35 && imc < 40) {
+                classificacao = 'com obesidade grau II';
+            } else {
+                classificacao = 'com obesidade mórbida';
+            }
+
+            // Exibindo o resultado no modal
+            abrirModal(`Seu IMC é ${imc}. Você está ${classificacao}.`);
+        }
+    </script>
+</body>
+</html>
