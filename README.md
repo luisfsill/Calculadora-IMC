@@ -21,7 +21,7 @@ Este é um projeto de uma calculadora de IMC (Índice de Massa Corporal) desenvo
 
 1. Clone o repositório para sua máquina local:
     ```sh
-    git clone [https://github.com/luisfsill/calculadora-imc.git](https://github.com/luisfsill/Calculadora-IMC)
+    git clone https://github.com/luisfsill/calculadora-imc.git
     ```
 2. Navegue até o diretório do projeto:
     ```sh
