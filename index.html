@@ -3,73 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcula IMC</title>
+    <title>Calculadora de IMC</title>
+    <!-- Fonte Poppins do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Estilo CSS -->
+    <link rel="stylesheet" href="src/css/style.css">
 </head>
-<link rel="stylesheet" href="style.css">
-<body>   
-    <div class="form">
-        <h1>Calcular seu IMC</h1>
-        <label for="peso">Peso (Kg)</Kg></label>
-        <input type="number" id="peso" placeholder="Qual seu Peso?">
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1 class="app-title">Calculadora de IMC</h1>
+            <p class="app-subtitle">Calcule seu Índice de Massa Corporal e descubra se seu peso está adequado para sua altura</p>
+        </header>
 
-        <label for="altura">Altura (M)</label>
-        <input type="number" id="altura" placeholder="Qual sua Altura?">
+        <div class="card-container">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-14h2v6h-2zm0 8h2v2h-2z"/>
+                        </svg>
+                    </div>
+                    <h2 class="card-title">Insira seus dados</h2>
+                </div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <label for="peso">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 3a9 9 0 00-9 9h18a9 9 0 00-9-9zm-10 10v2a10 10 0 0020 0v-2H2z"></path>
+                            </svg>
+                            Peso (kg)
+                        </label>
+                        <input type="text" id="peso" placeholder="Ex: 70.5" autocomplete="off">
+                    </div>
 
-        <button onclick="calcular()">Calcula</button>
+                    <div class="input-group">
+                        <label for="altura">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M13 3H11V7H13V3zm0 14H11V21H13V17zm6-6h-4v2h4v-2zM9 11H5v2h4v-2zm-4-2H3v6h2V9zm16 0h-2v6h2V9z"></path>
+                            </svg>
+                            Altura (m)
+                        </label>
+                        <input type="text" id="altura" placeholder="Ex: 1.75" autocomplete="off">
+                    </div>
+
+                    <button class="btn btn-calcular" onclick="calcularIMC()">Calcular IMC</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Modal e sobreposição -->
     <div class="modal-overlay" id="modal-overlay"></div>
     <div class="modal" id="modal">
-        <p id="modal-message"></p>
-        <button onclick="fecharModal()">Fechar</button>
+        <div id="modal-message"></div>
+        <button class="modal-btn" onclick="fecharModal()">Fechar</button>
     </div>
 
-    <script>
-        // Função para abrir o modal com a mensagem
-        function abrirModal(mensagem) {
-            document.getElementById("modal-message").innerText = mensagem;
-            document.getElementById("modal-overlay").style.display = "block";
-            document.getElementById("modal").style.display = "block";
-        }
-
-        // Função para fechar o modal
-        function fecharModal() {
-            document.getElementById("modal-overlay").style.display = "none";
-            document.getElementById("modal").style.display = "none";
-        }
-
-        function calcular(){
-            const peso = document.getElementById("peso").value;
-            const altura = document.getElementById("altura").value;
-
-            if (!peso || !altura || peso <= 0 || altura <= 0) {
-                abrirModal("Por favor, insira valores válidos para peso e altura.");
-                return;
-            }
-
-            // Calculando o IMC com duas casas decimais
-            const imc = (peso / (altura ** 2)).toFixed(1); 
-            let classificacao = '';
-
-            // Determinando a classificação do IMC
-            if (imc < 18) {
-                classificacao = 'abaixo do peso';
-            } else if (imc >= 18 && imc < 25) {
-                classificacao = 'com peso normal';
-            } else if (imc >= 25 && imc < 30) {
-                classificacao = 'com sobrepeso';
-            } else if (imc >= 30 && imc < 35) {
-                classificacao = 'com obesidade grau I';
-            } else if (imc >= 35 && imc < 40) {
-                classificacao = 'com obesidade grau II';
-            } else {
-                classificacao = 'com obesidade mórbida';
-            }
-
-            // Exibindo o resultado no modal
-            abrirModal(`Seu IMC é ${imc}. Você está ${classificacao}.`);
-        }
-    </script>
+    <!-- Script JS -->
+    <script src="src/js/script.js"></script>
 </body>
 </html>
