@@ -14,12 +14,14 @@ Este é um projeto de uma calculadora de IMC (Índice de Massa Corporal) desenvo
 - Cálculo do IMC com base nos dados fornecidos.
 - Exibição do resultado do IMC.
 - Classificação do IMC em categorias como: Abaixo do peso, Peso normal, Sobrepeso e Obesidade.
+- Interface elegante com tema escuro e tons de azul e roxo.
+- Animações e transições para melhor experiência do usuário.
 
 ## Como Usar
 
 1. Clone o repositório para sua máquina local:
     ```sh
-    git clone https://github.com/luisfsill/myrepository/tree/main/Projeito_IMC
+    git clone https://github.com/seu-usuario/calculadora-imc.git
     ```
 2. Navegue até o diretório do projeto:
     ```sh
@@ -30,8 +32,9 @@ Este é um projeto de uma calculadora de IMC (Índice de Massa Corporal) desenvo
 ## Estrutura do Projeto
 
 - `index.html`: Contém a estrutura da página web.
-- `styles.css`: Contém os estilos utilizados na página.
-- `script.js`: Contém a lógica de cálculo do IMC e a manipulação do DOM.
+- `src/css/style.css`: Contém os estilos utilizados na página.
+- `src/js/script.js`: Contém a lógica de cálculo do IMC e a manipulação do DOM.
+- `src/assets/Images`: Contém as imagens do projeto.
 
 ## Exemplo de Uso
 
@@ -44,13 +47,15 @@ Este é um projeto de uma calculadora de IMC (Índice de Massa Corporal) desenvo
 ## Capturas de Tela
 
 ### Tela Inicial
-![Tela Inicial][def]
+![Tela Inicial](src/assets/Images/Principal.jpg)
+
+### Tela de Resultados
+![Tela de Resultados](src/assets/Images/Resultados.jpg)
 
 ## Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
-Feito com ❤️ por [Luis Felipe](https://github.com/luisfsill)
+## Autor
 
-
-[def]: Tela-inicial.png
+Feito com ❤️ por [Seu Nome](https://github.com/seu-usuario)
